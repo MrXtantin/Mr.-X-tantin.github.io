@@ -1004,7 +1004,7 @@ const STATIONS = [
     category_icon: "🗼"
   },
   {
-    title: "GEOMETRie",
+    title: "GEOMETRIE",
     category: "// STATION 07 — Spirale",
     theme: "theme-teal",
     riddle: "Findet nun die Kräuter zum probieren nennt das vierte Kraut im Kreis?",
@@ -1025,28 +1025,15 @@ const STATIONS = [
     category_icon: "🧙"
   },
   {
-    title: "SCHATTEN",
+    title: "Burg",
     category: "// STATION 09 — ORIENTIERUNG",
     theme: "theme-blue",
-    riddle: "Schau auf die aktuelle Uhrzeit auf deinem Handy. Addiere alle Ziffern. Wenn es z.B. 14:32 ist: 1+4+3+2 = 10. Was ergibt deine aktuelle Zeit?",
-    answer: null, // dynamic
-    hint: "Schau oben in die Statusleiste — was zeigt dein Handy?",
-    clue: "Gehe zum nächsten PLATZ oder freien Fläche. In der Mitte oder an einer Ecke wartet der Hinweis.",
-    category_icon: "⏰",
-    dynamic: true,
-    dynamicCalc: function() {
-      const now = new Date();
-      const h = String(now.getHours()).padStart(2,'0');
-      const m = String(now.getMinutes()).padStart(2,'0');
-      const digits = (h + m).split('').map(Number);
-      return String(digits.reduce((a,b) => a+b, 0));
-    },
-    dynamicRiddle: function() {
-      const now = new Date();
-      const h = String(now.getHours()).padStart(2,'0');
-      const m = String(now.getMinutes()).padStart(2,'0');
-      return `Schau auf die aktuelle Uhrzeit: ${h}:${m}\n\nAddiere alle Stellen: ${h[0]} + ${h[1]} + ${m[0]} + ${m[1]} = ?`;
-    }
+    riddle: "Wie viele Tiere könnt ihr sehen im Guss im Stein im Eisen sie bestehen.",
+    answer: 6,
+    tolerance: 1,
+    hint: "Sie werden geritten oder nicht im Kreis manche sieht man nicht",
+    clue: "Kommt nun zum Platz von Dienstag früh alle dort gestartet doch manche dann zu spät.",
+    category_icon: "🏰",
   },
   {
     title: "ENTSCHLÜSSELUNG",
