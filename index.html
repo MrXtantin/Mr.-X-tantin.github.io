@@ -952,7 +952,7 @@ const STATIONS = [
   hint: "Lauft die Strecke.",
   clue: "Die nächste Aufgabe findet im Garten der Kirche.",
   category_icon: "🧭"
-}
+},
   {
     title: "SCHATTEN",
     category: "// STATION 02 — BILDCODE",
@@ -1301,11 +1301,20 @@ function checkAnswer() {
   const input = document.getElementById('answerInput').value.trim().toUpperCase();
 
   let correct = false;
-  if(s.dynamic && s.dynamicCalc) {
-    correct = input === s.dynamicCalc().toUpperCase();
-  } else {
-    correct = input === s.answer.toUpperCase().replace(/\s+/g,' ');
+if (s.dynamic && s.dynamicCalc) {
+  correct = input === s.dynamicCalc().toUpperCase();
+} else if (typeof s.answer === "number") {
+  // Zahlenantwort mit optionaler Toleranz
+  const value = Number(input);
+
+  if (!isNaN(value)) {
+    const tolerance = s.tolerance || 0;
+    correct = Math.abs(value - s.answer) <= tolerance;
   }
+} else {
+  // Textantwort
+  correct = input === s.answer.toUpperCase().replace(/\s+/g, ' ');
+}
 
   if(correct) {
     showSuccess();
